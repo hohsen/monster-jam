@@ -23,9 +23,9 @@ class CarRequest extends FormRequest
     {
         return [
             'model' => 'required | max:255',
-            'max_speed' => 'required | numeric | decimal:1,3',
+            'max_speed' => 'required | numeric | decimal:0,3',
             'horse_power' => 'required | numeric| max_digits:5',
-            'engine_volume' => 'required | numeric | decimal:1' ,
+            'engine_volume' => 'required | numeric | decimal:0,1' ,
             'year_of_manufacture' => 'required | numeric | max_digits:4',
         ];
     }

@@ -22,9 +22,11 @@ class ChampionRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => 'nullable',
             'name' => 'required | max:225',
             'surname' => 'required | max:225',
-            'biography' => 'required | max:1000',
+            'biography' => 'nullable',
+            'photo' => 'nullable',
         ];
     }
 }

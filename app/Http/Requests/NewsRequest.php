@@ -25,7 +25,7 @@ class NewsRequest extends FormRequest
             'title' => 'required | max:225',
             'description' => 'required',
             'short_description' => 'required',
-            'photo' => '',
+            'photo' => 'nullable',
         ];
     }
 }
