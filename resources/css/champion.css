@@ -1,0 +1,71 @@
+h2{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.container{
+    width: 600px;
+    margin: 20px auto;
+    padding: 5px;
+}
+
+.champion{
+    display: flex;
+}
+
+.champion__img{
+    width: 300px;
+    height: 300px;
+    background-color: #808080;
+}
+
+.champion__info{
+    width: 40%;
+    display: block;
+    margin-left: 20px;
+}
+
+.champion__biography{
+    margin-top: 20px;
+}
+
+.car{
+    display: flex;
+    flex-direction: column;
+    margin: 25px auto 30px auto;
+}
+
+.car__info{
+    margin-top: 10px;
+}
+
+.car__info_value{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.car__info_parameter{
+    font-weight: 700;
+}
+
+/* .randomChampions{
+
+} */
+
+.championsList{
+    margin-bottom: 10px;
+}
+
+.championsList__img{
+    width: 120px;
+    height: 120px;
+    background-color: #808080;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.championsList__info{
+    font-weight: 700;
+    margin-top: 10px;
+}

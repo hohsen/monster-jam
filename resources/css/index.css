@@ -1,0 +1,105 @@
+h1{
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h2{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.container{
+    width: 600px;
+    margin: 20px auto;
+    padding: 5px;
+}
+
+/* .main{
+
+} */
+
+.main__nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main__nav_title{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.main__nav_logInBtn{
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.main__slider{
+    display: flex;
+}
+
+.main__slider_img{
+    width: 530px;
+    height: 250px;
+    background-color: #808080;
+    margin-top: 10px;
+}
+
+/* .main__slider_dots{
+
+} */
+
+.news{
+    margin-top: 30px;
+}
+
+.news__title{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+/* .news__list{
+
+} */
+
+.news__list_img{
+    width: 170px;
+    height: 150px;
+    background-color: #808080;
+    margin-top: 10px;
+}
+
+.news__list_title{
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.champions{
+    margin: 30px auto 10px auto;
+}
+
+.champions__title{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+/* .champions__list{
+
+} */
+
+.champions__list_img{
+    width: 120px;
+    height: 120px;
+    background-color: #808080;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.champions__list_name{
+    font-weight: 700;
+    margin-top: 10px;
+}
