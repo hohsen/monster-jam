@@ -11,6 +11,7 @@ class CarRequest extends FormRequest
      */
     public function authorize(): bool
     {
+
         return true;
     }
 

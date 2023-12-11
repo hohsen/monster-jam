@@ -14,11 +14,15 @@
                         </div>
                     @endif
 
-                    <ul>
-                        <li><a href="{{ route('car.index') }}">Cars</a></li>
-                        <li><a href="{{ route('champion.index') }}">Champions</a></li>
-                        <li><a href="{{ route('news.index') }}">News</a></li>
-                    </ul>
+                    @if(Auth::check() && Auth::user()->is_admin == true)    {{-- Checks, if logged in user is admin --}}
+                        <ul>
+                            <li><a href="{{ route('car.index') }}">Cars</a></li>
+                            <li><a href="{{ route('champion.index') }}">Champions</a></li>
+                            <li><a href="{{ route('news.index') }}">News</a></li>
+                        </ul>
+                    @else
+                        <h2>You logged in!</h2>
+                    @endif
                 </div>
             </div>
         </div>
