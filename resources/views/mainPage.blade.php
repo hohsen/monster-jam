@@ -15,7 +15,6 @@
                 @endauth
             </div>
             @endif
-            {{-- <a class="main__nav_logInBtn" href="">Log in</a> --}}
         </div>
         <div class="main__slider">
             <div class="main__slider_img"></div>
@@ -23,7 +22,7 @@
         </div>
     </div>
     <div class="news">
-        <a class="news__title" href="{{ route('news.show') }}">news</a>
+        <a class="news__title" href="{{ url('/articles') }}">news</a>
         <div class="news__list">
             <div class="news__list_img"></div>
             <div class="news__list_title"><p>title</p></div>
@@ -31,10 +30,12 @@
     </div>
     <div class="champions">
         <a class="champions__title" href="{{ url('/championsList') }}">champions</a>
-        <div class="champions__list">
-            <div class="champions__list_img"></div>
-            <div class="champions__list_name"><p>name</p></div>
-        </div>
+        {{-- @foreach ($champions as $champion) --}}
+            <div class="champions__list">
+                <div class="champions__list_img"></div>
+                <div class="champions__list_name"><p>name</p></div>
+            </div>
+        {{-- @endforeach --}}
     </div>
 </div>
 

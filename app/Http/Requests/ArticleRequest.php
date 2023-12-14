@@ -3,15 +3,20 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class NewsRequest extends FormRequest
+class ArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        if (Auth::check() && Auth::user()->is_admin == true) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -25,7 +30,7 @@ class NewsRequest extends FormRequest
             'title' => 'required | max:225',
             'description' => 'required',
             'short_description' => 'required',
-            'photo' => 'nullable',
+            'photo' => 'nullable | image | mimes:jpg,png,jpeg | max:2048',
         ];
     }
 }

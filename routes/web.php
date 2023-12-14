@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ChampionController;
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'index');
+Route::view('/', 'mainPage');
 
-Route::view('/admin', 'admin');
 Auth::routes();
 
 
@@ -31,12 +31,11 @@ Route::view('/championsList', 'championsList');
 //Champion route
 Route::view('/champion_id', 'champion');
 
-//News list route
-// Route::view('/newsList', 'newsList');
-Route::get('newsList', [NewsController::class, 'show'])->name('news.show');
+//Articles route
+Route::get('articles', [ArticleController::class, 'show'])->name('article.show');
 
-//News route
-Route::view('/news_id', 'news');
+//Article route
+Route::view('/article_id', 'article');
 
 //Cars routes
 Route::get('cars', [CarController::class, 'index'])->name('car.index');
@@ -54,10 +53,18 @@ Route::get('champions/{id}', [ChampionController::class, 'edit'])->name('champio
 Route::put('champions/{id}', [ChampionController::class, 'update'])->name('champion.update');
 Route::delete('champions/{id}', [ChampionController::class, 'destroy'])->name('champion.delete');
 
-//News routes
-Route::get('news', [NewsController::class, 'index'])->name('news.index');
-Route::get('news/create', [NewsController::class, 'create'])->name('news.create');
-Route::post('news', [NewsController::class, 'store'])->name('news.store');
-Route::get('news/{id}', [NewsController::class, 'edit'])->name('news.edit');
-Route::put('news/{id}', [NewsController::class, 'update'])->name('news.update');
-Route::delete('news/{id}', [NewsController::class, 'destroy'])->name('news.delete');
+//Articles routes
+Route::get('articles', [ArticleController::class, 'index'])->name('article.index');
+Route::get('articles/create', [ArticleController::class, 'create'])->name('article.create');
+Route::post('articles', [ArticleController::class, 'store'])->name('article.store');
+Route::get('articles/{id}', [ArticleController::class, 'edit'])->name('article.edit');
+Route::put('articles/{id}', [ArticleController::class, 'update'])->name('article.update');
+Route::delete('articles/{id}', [ArticleController::class, 'destroy'])->name('article.delete');
+
+//Sliders routes
+Route::get('sliders', [SliderController::class, 'index'])->name('slider.index');
+Route::get('sliders/create', [SliderController::class, 'create'])->name('slider.create');
+Route::post('sliders', [SliderController::class, 'store'])->name('slider.store');
+Route::get('sliders/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+Route::put('sliders/{id}', [SliderController::class, 'update'])->name('slider.update');
+Route::delete('sliders/{id}', [SliderController::class, 'destroy'])->name('slider.delete');

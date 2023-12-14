@@ -17,14 +17,17 @@
                     @endif
 
                     @if(Auth::check() && Auth::user()->is_admin == true)
-                        <button onclick="window.location='{{ route('champion.create') }}'">Add new champion</button>
+                        <button onclick="window.location='{{ route('article.create') }}'">Add new article</button>
 
                         <ul>
-                            @foreach ($champions as $champion)
+                            @foreach ($articles as $article)
                                 <li>
-                                    <a href="{{ route('champion.edit', ['id' => $champion->id]) }}">{{ $champion->name }}</a>
+                                    <a href="{{ route('article.edit', ['id' => $article->id]) }}">{{ $article->title }}</a>
+
+                                    <br>
+
                                     @php
-                                        $arr = $champion->toArray();
+                                        $arr = $article->toArray();
 
                                         foreach ($arr as $key => $value) {
                                             echo "<pre>";
@@ -33,7 +36,7 @@
                                         }
                                     @endphp
 
-                                    <form action="{{ route('champion.delete', ['id' => $champion->id]) }}" method="POST">
+                                    <form action="{{ route('article.delete', ['id' => $article->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
 
@@ -51,17 +54,3 @@
     </div>
 </div>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-

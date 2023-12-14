@@ -1,41 +1,69 @@
-<form action="{{route('car.store')}}" method="POST">
-    @csrf
+@extends('layouts.app')
 
-    <label for="model">Model: <br /></label>
-    <input type="text" name="model" id="model">
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Create car') }}</div>
 
-    <br>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-    <label for="max_speed">Max speed: <br /></label>
-    <input type="text" name="max_speed" id="max_speed"> <span>km/h</span>
+                    @if(Auth::check() && Auth::user()->is_admin == true)
+                        <form action="{{route('car.store')}}" method="POST">
+                            @csrf
 
-    <br>
+                            <label for="model">Model: <br /></label>
+                            <input type="text" name="model" id="model">
 
-    <label for="horse_power">Horse power: <br /></label>
-    <input type="text" name="horse_power" id="horse_power"> <span>hp</span>
+                            <br>
 
-    <br>
+                            <label for="max_speed">Max speed: <br /></label>
+                            <input type="text" name="max_speed" id="max_speed"> <span>km/h</span>
 
-    <label for="engine_volume">Engine volime: <br /></label>
-    <input type="text" name="engine_volume" id="engine_volume"> <span>l</span>
+                            <br>
 
-    <br>
+                            <label for="horse_power">Horse power: <br /></label>
+                            <input type="text" name="horse_power" id="horse_power"> <span>hp</span>
 
-    <label for="year_of_manufacture">Year of manufacture: <br /></label>
-    <input type="text" name="year_of_manufacture" id="year_of_manufacture">
+                            <br>
 
-    <br>
-    <br>
+                            <label for="engine_volume">Engine volime: <br /></label>
+                            <input type="text" name="engine_volume" id="engine_volume"> <span>l</span>
 
-    <button type="submit">save</button>
+                            <br>
 
-    @if ($errors->any())
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+                            <label for="year_of_manufacture">Year of manufacture: <br /></label>
+                            <input type="text" name="year_of_manufacture" id="year_of_manufacture">
+
+                            <br>
+                            <br>
+
+                            <button type="submit">save</button>
+
+                            @if ($errors->any())
+                            <div>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                        </form>
+
+                        <button onclick="window.location='{{ route('car.index') }}'">Cancel</button>
+                    @else
+                    <h2>You logged in!</h2>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-    @endif
-</form>
+</div>
+@endsection

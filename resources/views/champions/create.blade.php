@@ -1,41 +1,64 @@
-<form action="{{route('champion.store')}}" method="POST">
-    @csrf
+@extends('layouts.app')
 
-    <label for="car_id">Car id: <br /></label>
-    <input type="text" name="car_id" id="car_id">
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Create champion') }}</div>
 
-    <br>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-    <label for="name">Name: <br /></label>
-    <input type="text" name="name" id="name">
+                    @if(Auth::check() && Auth::user()->is_admin == true)
+                        <form action="{{route('champion.store')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
 
-    <br>
+                            <label for="car_id">Car id: <br /></label>
+                            <input type="text" name="car_id" id="car_id">
 
-    <label for="surname">Surname: <br /></label>
-    <input type="text" name="surname" id="surname">
+                            <br>
 
-    <br>
+                            <label for="name">Name: <br /></label>
+                            <input type="text" name="name" id="name">
 
-    <label for="biography">Biography: <br /></label>
-    <input type="text" name="biography" id="biography">
+                            <br>
 
-    <br>
+                            <label for="biography">Biography: <br /></label>
+                            <input type="text" name="biography" id="biography">
 
-    <label for="photo">Photo: <br /></label>
-    <input type="text" name="photo" id="photo">
+                            <br>
 
-    <br>
-    <br>
+                            <label for="photo">Photo: <br /></label>
+                            <input type="file" name="photo" id="photo">
 
-    <button type="submit">save</button>
+                            <br>
+                            <br>
 
-    @if ($errors->any())
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+                            <button type="submit">save</button>
+
+                            @if ($errors->any())
+                            <div>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                        </form>
+
+                        <button onclick="window.location='{{ route('champion.index') }}'">Cancel</button>
+                    @else
+                    <h2>You logged in!</h2>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-    @endif
-</form>
+</div>
+@endsection

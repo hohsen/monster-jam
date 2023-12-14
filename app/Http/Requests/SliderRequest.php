@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class ChampionRequest extends FormRequest
+class SliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +27,7 @@ class ChampionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'nullable',
-            'name' => 'required | max:225',
-            'biography' => 'nullable',
-            'photo' => 'nullable | image | mimes:jpg,png,jpeg | max:2048',
+            'photo' => 'required | image | mimes:jpg,png,jpeg | max:2048',
         ];
     }
 }

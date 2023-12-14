@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ChampionRequest;
 use App\Models\Champion;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ChampionController extends Controller
 {
@@ -17,13 +19,24 @@ class ChampionController extends Controller
     {
         return view('champions.create');
     }
-
     public function store(ChampionRequest $request)
     {
-        $data = $request->validated();
-        Champion::create($data);
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = $file->getClientOriginalName();
+            Storage::putFileAs('/images/champions_photos', $file, $fileName);
 
-        return redirect()->route('champion.index');
+            $data = $request->validated();
+            $data['photo'] = $fileName;
+
+            Champion::create($data);
+
+            return redirect()->route('champion.index');
+        }else{
+            $data = $request->validated();
+            Champion::create($data);
+            return redirect()->route('champion.index');
+        }
     }
 
     public function show(string $id)
@@ -39,11 +52,22 @@ class ChampionController extends Controller
     public function update(ChampionRequest $request, string $id)
     {
         $champion = Champion::findOrFail($id);
-        $data = $request->validated();
 
-        $champion->update($data);
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = $file->getClientOriginalName();
+            Storage::putFileAs('/images/champions_photos', $file, $fileName);
 
-        return redirect()->route('champion.index');
+            $data = $request->validated();
+            $data['photo'] = $fileName;
+            $champion->update($data);
+
+            return redirect()->route('champion.index');
+        }else{
+            $data = $request->validated();
+            $champion->update($data);
+            return redirect()->route('champion.index');
+        }
     }
 
     public function destroy(string $id)

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('car_id') -> nullable();
             $table->string('name');
-            $table->string('surname');
             $table->text('biography');
             $table->string('photo') -> nullable();
             $table->timestamps();

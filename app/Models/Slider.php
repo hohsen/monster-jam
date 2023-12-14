@@ -5,18 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Champion extends Model
+class Slider extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'car_id',
-        'name',
-        'biography',
         'photo',
     ];
 
-    public function cars() {
-        return $this->hasMany(Car::class);
-    }
 }

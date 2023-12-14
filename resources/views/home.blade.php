@@ -18,7 +18,8 @@
                         <ul>
                             <li><a href="{{ route('car.index') }}">Cars</a></li>
                             <li><a href="{{ route('champion.index') }}">Champions</a></li>
-                            <li><a href="{{ route('news.index') }}">News</a></li>
+                            <li><a href="{{ route('article.index') }}">Articles</a></li>
+                            <li><a href="{{ route('slider.index') }}">Sliders</a></li>
                         </ul>
                     @else
                         <h2>You logged in!</h2>

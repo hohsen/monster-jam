@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CarRequest extends FormRequest
 {
@@ -11,8 +12,11 @@ class CarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-
-        return true;
+        if (Auth::check() && Auth::user()->is_admin == true) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
